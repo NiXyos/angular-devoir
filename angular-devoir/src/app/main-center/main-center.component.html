@@ -1,5 +1,5 @@
 <div id="center" class="main center">
-    <div class="container">    
-        <app-card></app-card>
+    <div class="container" *ngFor="let film of films">    
+        <app-card [film]="film"></app-card>
     </div>
 </div>
