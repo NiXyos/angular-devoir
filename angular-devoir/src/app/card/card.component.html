@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card">
-        <a href="details.html">
+        <a routerLink="/details/{{film.id}}">
             <img [src]="film.picture"/>
             <p>{{ film.title }}</p>
         </a>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Film } from '../types';
+import { FILMS } from '../film';
 
 @Component({
   selector: 'app-main-center',
@@ -9,14 +8,7 @@ import { Film } from '../types';
 })
 export class MainCenterComponent implements OnInit {
 
-
-  films: Film[] = [
-    {
-    picture: "https://image.tmdb.org/t/p/w780//1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-    title: "Harry potter"
-    }
-  ];
-
+  films = FILMS
   constructor() { }
 
   ngOnInit(): void {
