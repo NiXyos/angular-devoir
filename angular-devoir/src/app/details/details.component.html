@@ -3,10 +3,10 @@
         <!-- Début partie spécifique home page -->
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <img class="details-img" [src]="film.picture" [alt]="film.title" />
+            <img class="details-img" [src]="film?.picture" [alt]="film?.title" />
           </div>
           <div class="col-xs-12 col-sm-8">
-            <h2>{{ film.title }}</h2>
+            <h2>{{ film?.title }}</h2>
             <h3>The Multiverse unleashed.</h3>
             <p class="meta-wrap">
               <span class="rating">rating: 8.3</span>

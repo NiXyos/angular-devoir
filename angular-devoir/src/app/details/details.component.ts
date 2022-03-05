@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FILMS } from '../film';
 import { Film } from '../types';
+import { FilmService } from '../film.service';
 
 @Component({
   selector: 'app-details',
@@ -11,13 +11,17 @@ import { Film } from '../types';
 
 export class DetailsComponent implements OnInit {
   film?: Film;
+
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private filmService: FilmService
   ) {}
+  
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.film = FILMS.find(item => id === item.id);
-    console.log(this.film);
+    this.filmService.getFilm(id)
+    next: (film: Film) => {
+      this.film = film;
+    }
   }
-
 }
