@@ -13,8 +13,18 @@ export class Film {
     vote_count!: number;
     poster_path!: string;
     backdrop_path!: string;
-    genres!:[{
+    genres!: [{
       id: number,
-      name:string
+      name: string
     }]
+    production_companies!: [{
+      id: number,
+      logo_path: string,
+      name: string,
+      origin_country: string
+    }]
+    runtime!: number;
+    tagline!: string;
 }
+
+

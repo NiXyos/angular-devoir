@@ -13,10 +13,12 @@ export class MainCenterComponent implements OnInit {
   constructor(private filmService: FilmService) { }
 
   ngOnInit(): void {
-    this.filmService.getAllFilms()
-      .then(films => {
+    this.filmService.getAllFilms().subscribe(
+      {
+        next: (films) => {
         this.films = films;
-      });
+        }
+      }
+    )
   }
-
 }

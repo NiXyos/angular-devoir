@@ -3,20 +3,18 @@
         <!-- Début partie spécifique home page -->
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <img class="details-img" [src]="film?.picture" [alt]="film?.title" />
+            <img class="details-img" [src]="film?.poster_path" [alt]="film?.title" />
           </div>
           <div class="col-xs-12 col-sm-8">
             <h2>{{ film?.title }}</h2>
-            <h3>The Multiverse unleashed.</h3>
+            <h3>{{ film?.tagline }}</h3>
             <p class="meta-wrap">
-              <span class="rating">rating: 8.3</span>
-              <span class="meta">English / 148 min. / 2021</span>
+              <span class="rating">rating: {{ film?.vote_average }}</span>
+              <span class="meta">{{ film?.original_language }} / {{ film?.runtime }} min. / {{ film?.release_date }}</span>
             </p>
 
             <ul class="genres">
-              <li>Action</li>
-              <li>Adventure</li>
-              <li>Science-Fiction</li>
+              <li *ngFor="let genre of film?.genres">{{ genre.name }}</li>
             </ul>
         </div>
         <!-- Fin partie spécifique home page -->

@@ -20,8 +20,11 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.filmService.getFilm(id)
-    next: (film: Film) => {
-      this.film = film;
-    }
+    .subscribe({
+      next: (film: Film) => {
+        this.film = film;
+        }
+      }
+    )
   }
 }
