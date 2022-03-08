@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Genre } from '../types';
+import { FilmService } from '../film.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-menu.component.css']
 })
 export class SidebarMenuComponent implements OnInit {
+  genres: Genre[] = [];
 
-  constructor() { }
+  constructor(private filmService: FilmService) { }
 
   ngOnInit(): void {
+    this.filmService.getAllGenre().subscribe(
+      {
+        next: (genres) => {
+        this.genres = genres;
+        }
+      }
+    )
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Film } from './types';
+import { Film, Genre } from './types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ export class FilmService {
   // URL absolue
   serverUrl = 'https://movie-api.benoithubert.me';
   // chemin relatif sur le serveur
-  postsPath = '/movies';
+  filmsPath = '/movies';
+  genrePath = '/genres';
   
   constructor(
     private http: HttpClient,
@@ -43,7 +44,16 @@ export class FilmService {
   getAllFilms(): Observable<Film[]> {
     return this.http
       .get<Film[]>(
-        `${this.serverUrl}${this.postsPath}`
+        `${this.serverUrl}${this.filmsPath}`
+      )
+      .pipe();
+      
+  }
+
+  getAllGenre(): Observable<Genre[]> {
+    return this.http
+      .get<Genre[]>(
+        `${this.serverUrl}${this.genrePath}`
       )
       .pipe();
       
@@ -52,10 +62,8 @@ export class FilmService {
   getFilm(id: number): Observable<Film> {
     return this.http
       .get<Film>(
-        `${this.serverUrl}${this.postsPath}/${id}`
+        `${this.serverUrl}${this.filmsPath}/${id}`
       )
-      .pipe(
-        catchError(error => this.handleError(error))
-      );
+      .pipe();
   }
 }
